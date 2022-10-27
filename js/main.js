@@ -1,9 +1,10 @@
+/* eslint-disable no-console */
 // Функция_1 находит одно целое, натуральное
 // число в диапазоне от заданного минимального значения (натуральное, целое, меньше максимального),
 // до максимального (натуральное, целое, больше минимального).
 
 
-const getRandomFloat = function(min, max) {
+function getRandomFloat(min, max) {
   if (min < 0 || max < 0) {
     console.log('Ошибка: Вы ввели отрицательно число! Принимаются только натуральные числа.');
     return NaN;
@@ -17,12 +18,12 @@ const getRandomFloat = function(min, max) {
     return NaN;
   }
   return Math.round(Math.random() * (max - min) + min);
-};
+}
 
-// console.log('Начало теста!');
+console.log('Начало теста!');
 
-// console.log('тест № 1:');
-// console.log(getRandomFloat(5, 10));
+console.log('тест № 1:');
+console.log(getRandomFloat(5, 10));
 
 // console.log('тест № 2:');
 // console.log(getRandomFloat(5, -10));
