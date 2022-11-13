@@ -92,41 +92,33 @@ const NAME_USER = [
   'Вероника',
 ];
 
-let array = function (start, end) {
-  let arrayNumber = [];
+const array = function (start, end) {
+  const arrayNumber = [];
   for (let i = start; i <= end; i++) {
     arrayNumber.push(i);
-}
-arrayNumber.sort(() => Math.random() - 0.5)
-return arrayNumber;
-}
+  }
+  arrayNumber.sort(() => Math.random() - 0.5);
+  return arrayNumber;
+};
 
-let idPhotoNumber = array(1,25);
-let urlPhoto = array(1,25);
-let likesPhoto = array(15,200);
-let idComments = array(1,25);
+const idPhotoNumber = array(1, 25);
+const urlPhoto = array(1, 25);
+const likesPhoto = array(15, 200);
+const idComments = array(1, 25);
 
 const getRandomPositiveInteger = (a, b) => {
-    if (a < 0 || b < 0) {
-      return NaN;
-    }
-    const lower = Math.ceil(Math.min(a));
-    const upper = Math.floor(Math.max(b));
-    const result = Math.random() * (upper - lower + 1) + lower;
-    return Math.floor(result);
-  };
+  if (a < 0 || b < 0) {
+    return NaN;
+  }
+  const lower = Math.ceil(Math.min(a));
+  const upper = Math.floor(Math.max(b));
+  const result = Math.random() * (upper - lower + 1) + lower;
+  return Math.floor(result);
+};
 
-  const getRandomArrayElement = function (elements) {
-    return elements[getRandomPositiveInteger(0, elements.length - 1)];
-  };
- 
-const photoInformation = () => ({
-  id: idPhotoNumber.pop(),
-  url: `photos/${urlPhoto.pop()}.jpg`,
-  description: getRandomArrayElement(DISCRIPTION),
-  likes: likesPhoto.pop(),
-  comments: getRandomArrayElement(Array.from({ length: 1}, functionComments)),
-});
+const getRandomArrayElement = function (elements) {
+  return elements[getRandomPositiveInteger(0, elements.length - 1)];
+};
 
 const functionComments = () => ({
   id: idComments.pop(),
@@ -134,6 +126,14 @@ const functionComments = () => ({
   message: getRandomArrayElement(MESSAGE),
   name: getRandomArrayElement(NAME_USER),
 
+});
+
+const photoInformation = () => ({
+  id: idPhotoNumber.pop(),
+  url: `photos/${urlPhoto.pop()}.jpg`,
+  description: getRandomArrayElement(DISCRIPTION),
+  likes: likesPhoto.pop(),
+  comments: getRandomArrayElement(Array.from({ length: 1 }, functionComments)),
 });
 
 const comments = Array.from(functionComments);
