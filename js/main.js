@@ -92,32 +92,44 @@ const NAME_USER = [
   'Вероника',
 ];
 
+let array = function (start, end) {
+  let arrayNumber = [];
+  for (let i = start; i <= end; i++) {
+    arrayNumber.push(i);
+}
+arrayNumber.sort(() => Math.random() - 0.5)
+return arrayNumber;
+}
+
+let idPhotoNumber = array(1,25);
+let urlPhoto = array(1,25);
+let likesPhoto = array(15,200);
+let idComments = array(1,25);
+
 const getRandomPositiveInteger = (a, b) => {
-  if (a < 0 || b < 0) {
-    return NaN;
-  }
-  const lower = Math.ceil(Math.min(a));
-  const upper = Math.floor(Math.max(b));
-  const result = Math.random() * (upper - lower + 1) + lower;
-  return Math.floor(result);
-};
+    if (a < 0 || b < 0) {
+      return NaN;
+    }
+    const lower = Math.ceil(Math.min(a));
+    const upper = Math.floor(Math.max(b));
+    const result = Math.random() * (upper - lower + 1) + lower;
+    return Math.floor(result);
+  };
 
-
-const getRandomArrayElement = function (elements) {
-  return elements[getRandomPositiveInteger(0, elements.length - 1)];
-};
-
+  const getRandomArrayElement = function (elements) {
+    return elements[getRandomPositiveInteger(0, elements.length - 1)];
+  };
+ 
 const photoInformation = () => ({
-  id: getRandomPositiveInteger(0, 25),
-  url: `photos/${getRandomPositiveInteger(1, 25)}.jpg`,
+  id: idPhotoNumber.pop(),
+  url: `photos/${urlPhoto.pop()}.jpg`,
   description: getRandomArrayElement(DISCRIPTION),
-  likes: getRandomPositiveInteger(15, 200),
-  comments: getRandomArrayElement(Array.from({ length: 5 }, functionComments)),
+  likes: likesPhoto.pop(),
+  comments: getRandomArrayElement(Array.from({ length: 1}, functionComments)),
 });
 
-
 const functionComments = () => ({
-  id: getRandomPositiveInteger(0, 1000),
+  id: idComments.pop(),
   avatar: `img/avatar-${getRandomPositiveInteger(1, 6)}.svg`,
   message: getRandomArrayElement(MESSAGE),
   name: getRandomArrayElement(NAME_USER),
@@ -125,7 +137,7 @@ const functionComments = () => ({
 });
 
 const comments = Array.from(functionComments);
-// console.log(comments);
+console.log(comments);
 
 const photo = Array.from({ length: 25 }, photoInformation);
 console.log(photo);
